@@ -68,81 +68,81 @@ CREATE TABLE TGolfers
 
 CREATE TABLE TShirtSizes
 (
-	 intShirtSizeID						INTEGER			NOT NULL
-	,strShirtSizeDesc					VARCHAR(255)	NOT NULL
+	 intShirtSizeID			INTEGER		NOT NULL
+	,strShirtSizeDesc		VARCHAR(255)	NOT NULL
 	,CONSTRAINT TShirtSizes_PK PRIMARY KEY ( intShirtSizeID )
 )
 
 CREATE TABLE TEventGolfers
 (						
-	 intEventGolferID					INTEGER			NOT NULL
-	,intEventID							INTEGER			NOT NULL
-	,intGolferID						INTEGER			NOT NULL
-	,strReasonforPlaying				VARCHAR(8000)	NOT NULL
+	 intEventGolferID		INTEGER		NOT NULL
+	,intEventID			INTEGER		NOT NULL
+	,intGolferID			INTEGER		NOT NULL
+	,strReasonforPlaying		VARCHAR(8000)	NOT NULL
 	,CONSTRAINT TEventGolfers_PK PRIMARY KEY ( intEventGolferID )
 )
 
 CREATE TABLE TEventGolferTeamandClubs
 (						
-	 intEventGolferTeamandClubID		INTEGER			NOT NULL
-	,intEventGolferID					INTEGER			NOT NULL
-	,intTeamandClubID					INTEGER			NOT NULL
+	 intEventGolferTeamandClubID	INTEGER		NOT NULL
+	,intEventGolferID		INTEGER		NOT NULL
+	,intTeamandClubID		INTEGER		NOT NULL
 	,CONSTRAINT TEventGolferTeams_PK PRIMARY KEY ( intEventGolferTeamandClubID )
 )
 
 CREATE TABLE TTeamandClubs
 (						
-	 intTeamandClubID					INTEGER			NOT NULL
-	,intTypeofTeamID					INTEGER			NOT NULL
-	,intLevelofTeamID					INTEGER			NOT NULL
-	,intGenderID						INTEGER			NOT NULL
+	 intTeamandClubID		INTEGER		NOT NULL
+	,intTypeofTeamID		INTEGER		NOT NULL
+	,intLevelofTeamID		INTEGER		NOT NULL
+	,intGenderID			INTEGER		NOT NULL
 	,CONSTRAINT TTeamandClubs_PK PRIMARY KEY ( intTeamandClubID )
 )
 
 CREATE TABLE TTypeofTeams
 (
-	 intTypeofTeamID					INTEGER			NOT NULL
-	,strTypeofTeamDesc					Varchar(255)	NOT NULL
+	 intTypeofTeamID		INTEGER		NOT NULL
+	,strTypeofTeamDesc		Varchar(255)	NOT NULL
 	,CONSTRAINT TTypeofTeams_PK PRIMARY KEY ( intTypeofTeamID )
 )
 
 CREATE TABLE TLevelofTeams
 (
-	 intLevelofTeamID					INTEGER			NOT NULL
-	,strLevelDesc						Varchar(255)	NOT NULL
+	 intLevelofTeamID		INTEGER		NOT NULL
+	,strLevelDesc			Varchar(255)	NOT NULL
 	,CONSTRAINT TLevelofTeams_PK PRIMARY KEY ( intLevelofTeamID )
 )
 
 CREATE TABLE TGenders
 (
-	 intGenderID						INTEGER			NOT NULL
-	,strGenderDesc						Varchar(255)	NOT NULL
+	 intGenderID			INTEGER		NOT NULL
+	,strGenderDesc			Varchar(255)	NOT NULL
 	,CONSTRAINT TGenders_PK PRIMARY KEY ( intGenderID )
 )
 
 CREATE TABLE TEventGolferSponsors 
 (
-	 intEventGolferSponsorID			INTEGER			NOT NULL
-	,intEventGolferID					INTEGER			NOT NULL
-	,intSponsorID						INTEGER			NOT NULL
-	,monPledgeAmount					MONEY			NOT NULL
-	,dteDateofPledge					DATE			NOT NULL
-	,intPaymentStatusID					INTEGER			NOT NULL
-	,intPaymentTypeID					INTEGER			NOT NULL
+	 intEventGolferSponsorID	INTEGER		NOT NULL
+	,intEventGolferID		INTEGER		NOT NULL
+	,intSponsorID			INTEGER		NOT NULL
+	,monPledgeAmount		MONEY		NOT NULL
+	,dteDateofPledge		DATE		NOT NULL
+	,intPaymentStatusID		INTEGER		NOT NULL
+	,intPaymentTypeID		INTEGER		NOT NULL
 	,CONSTRAINT TEventGolferSponsors_PK PRIMARY KEY ( intEventGolferSponsorID )
 )
 
 CREATE TABLE TSponsors
 (
-	 intSponsorID						INTEGER			NOT NULL
-	,strFirstName						VARCHAR(255)	NOT NULL
-	,strLastName						VARCHAR(255)	NOT NULL
-	,strAddress							VARCHAR(255)	NOT NULL
-	,strCity							VARCHAR(255)	NOT NULL
-	,intStateID							INTEGER			NOT NULL
-	,strZip								VARCHAR(255)	NOT NULL
-	,strPhoneNumber						VARCHAR(255)	NOT NULL
-	,strEmail							VARCHAR(255)	NOT NULL
+	 intSponsorID			INTEGER		NOT NULL
+	,strFirstName			VARCHAR(255)	NOT NULL
+	,strLastName			VARCHAR(255)	NOT NULL
+	,strAddress			VARCHAR(255)	NOT NULL
+	,strCity			VARCHAR(255)	NOT NULL
+	,intStateID			INTEGER		NOT NULL
+	,strZip				VARCHAR(255)	NOT NULL
+	,strPhoneNumber			VARCHAR(255)	NOT NULL
+	,strEmail			VARCHAR(255)	NOT NULL
 	,CONSTRAINT TSponsors_PK PRIMARY KEY ( intSponsorID )
 )
 
