@@ -148,48 +148,48 @@ CREATE TABLE TSponsors
 
 CREATE TABLE TPaymentTypes
 (
-	 intPaymentTypeID					INTEGER			NOT NULL
-	,strPaymentTypeDesc					Varchar(255)	NOT NULL
+	 intPaymentTypeID		INTEGER		NOT NULL
+	,strPaymentTypeDesc		Varchar(255)	NOT NULL
 	,CONSTRAINT TPaymentTypes_PK PRIMARY KEY ( intPaymentTypeID )
 )
 
 CREATE TABLE TPaymentStatuses
 (
-	 intPaymentStatusID					INTEGER			NOT NULL
-	,strPaymentStatuseDesc				Varchar(255)	NOT NULL
+	 intPaymentStatusID		INTEGER		NOT NULL
+	,strPaymentStatuseDesc		Varchar(255)	NOT NULL
 	,CONSTRAINT TPaymentStatuses_PK PRIMARY KEY ( intPaymentStatusID )
 
 )
 
 CREATE TABLE TStates
 (
-	 intStateID							INTEGER			NOT NULL
-	,strStateDesc						Varchar(255)	NOT NULL
+	 intStateID			INTEGER		NOT NULL
+	,strStateDesc			Varchar(255)	NOT NULL
 	,CONSTRAINT TStates_PK PRIMARY KEY ( intStateID )
 )
 
 CREATE TABLE TEventCorporateSponsorshipTypes
 (
-	 intEventCorporateSponsorshipTypeID	INTEGER			NOT NULL
-	,intEventID							INTEGER			NOT NULL
-	,intCorporateSponsorshipTypeID		INTEGER			NOT NULL
-	,monTypeCost						MONEY			NOT NULL
-	,intAvailable						INTEGER			NOT NULL
+	 intEventCorporateSponsorshipTypeID	INTEGER		NOT NULL
+	,intEventID				INTEGER		NOT NULL
+	,intCorporateSponsorshipTypeID		INTEGER		NOT NULL
+	,monTypeCost				MONEY		NOT NULL
+	,intAvailable				INTEGER		NOT NULL
 	,CONSTRAINT EventCorporateSponsorshipTypes_PK PRIMARY KEY ( intEventCorporateSponsorshipTypeID )
 )
 
 CREATE TABLE TCorporateSponsorshipTypes
 (
-	 intCorporateSponsorshipTypeID		INTEGER			NOT NULL
-	,strTypeDescription					VARCHAR(255)	NOT NULL
+	 intCorporateSponsorshipTypeID		INTEGER		NOT NULL
+	,strTypeDescription			VARCHAR(255)	NOT NULL
 	,CONSTRAINT TCorporateSponsorshipTypes_PK PRIMARY KEY (  intCorporateSponsorshipTypeID )
 )
 
 CREATE TABLE TEventCorporateSponsorshipTypeBenefits
 (
-	 intEventCorporateSponsorshipTypeBenefitID	INTEGER			NOT NULL
-	,intEventCorporateSponsorshipTypeID			INTEGER			NOT NULL
-	,intBenefitID								INTEGER			NOT NULL  
+	 intEventCorporateSponsorshipTypeBenefitID	INTEGER		NOT NULL
+	,intEventCorporateSponsorshipTypeID		INTEGER		NOT NULL
+	,intBenefitID					INTEGER		NOT NULL  
 	,CONSTRAINT TEventCorporateSponsorshipTypeBenefits_PK PRIMARY KEY ( intEventCorporateSponsorshipTypeBenefitID )
 )
 
@@ -211,16 +211,16 @@ CREATE TABLE TEventCorporateSponsorshipTypeCorporateSponsors
 
 CREATE TABLE TCorporateSponsors
 (
-	 intCorporateSponsorID				INTEGER			NOT NULL
-	,strCompanyName						VARCHAR(255)	NOT NULL
-	,strFirstName						VARCHAR(255)	NOT NULL
-	,strLastName						VARCHAR(255)	NOT NULL
-	,strAddress							VARCHAR(255)	NOT NULL
-	,strCity							VARCHAR(255)	NOT NULL
-	,intStateID							INTEGER			NOT NULL
-	,strZip								VARCHAR(255)	NOT NULL
-	,strPhoneNumber						VARCHAR(255)	NOT NULL
-	,strEmail							VARCHAR(255)	NOT NULL
+	 intCorporateSponsorID			INTEGER		NOT NULL
+	,strCompanyName				VARCHAR(255)	NOT NULL
+	,strFirstName				VARCHAR(255)	NOT NULL
+	,strLastName				VARCHAR(255)	NOT NULL
+	,strAddress				VARCHAR(255)	NOT NULL
+	,strCity				VARCHAR(255)	NOT NULL
+	,intStateID				INTEGER		NOT NULL
+	,strZip					VARCHAR(255)	NOT NULL
+	,strPhoneNumber				VARCHAR(255)	NOT NULL
+	,strEmail				VARCHAR(255)	NOT NULL
 	,CONSTRAINT TCorporateSponsors_PK PRIMARY KEY ( intCorporateSponsorID )
 )
 
