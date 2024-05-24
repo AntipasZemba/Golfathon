@@ -195,17 +195,17 @@ CREATE TABLE TEventCorporateSponsorshipTypeBenefits
 
 CREATE TABLE TBenefits
 (
-	 intBenefitID						INTEGER			NOT NULL
-	,strBenefitDescription				VARCHAR(255)	NOT NULL  
+	 intBenefitID			INTEGER		NOT NULL
+	,strBenefitDescription		ARCHAR(255)	NOT NULL  
 	,CONSTRAINT TBenefits_PK PRIMARY KEY ( intBenefitID )
 )
 
 
 CREATE TABLE TEventCorporateSponsorshipTypeCorporateSponsors
 (
-	 intEventCorporateSponsorshipTypeCorporateSponsorID		INTEGER			NOT NULL
-	,intEventCorporateSponsorshipTypeID						INTEGER			NOT NULL
-	,intCorporateSponsorID									INTEGER			NOT NULL
+	 intEventCorporateSponsorshipTypeCorporateSponsorID		INTEGER		NOT NULL
+	,intEventCorporateSponsorshipTypeID				INTEGER		NOT NULL
+	,intCorporateSponsorID						INTEGER		NOT NULL
 	,CONSTRAINT TCorporateSponsorshipsCorporateSponsors_PK PRIMARY KEY ( intEventCorporateSponsorshipTypeCorporateSponsorID )	 
 )
 
