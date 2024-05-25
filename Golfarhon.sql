@@ -567,38 +567,38 @@ FROM TEvents AS TE
 -- Aggregate #2  -- only pulling donations
 -- --------------------------------------------------------------------------------
 SELECT TE.dtmEventDate
-	   ,COUNT(TEGS.intSponsorID) AS TotalSponsors
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TSponsors AS TS
-		ON TS.intSponsorID = TEGS.intSponsorID								
+,COUNT(TEGS.intSponsorID) AS TotalSponsors
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TSponsors AS TS
+	ON TS.intSponsorID = TEGS.intSponsorID								
 Group By TE.dtmEventDate
 
 -- --------------------------------------------------------------------------------
 -- Aggregate #3
 -- --------------------------------------------------------------------------------
 SELECT	TE.dtmEventDate 
-	   ,SUM(TEGS.monPledgeAmount * 100) AS TotalPledged
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID						
+	,SUM(TEGS.monPledgeAmount * 100) AS TotalPledged
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID						
 Group By TE.dtmEventDate
 
 -- --------------------------------------------------------------------------------
 -- Aggregate #4
 -- --------------------------------------------------------------------------------
 SELECT	TE.dtmEventDate 
-	   ,SUM(TEGS.monPledgeAmount * 100) AS TotalCollected
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
+	,SUM(TEGS.monPledgeAmount * 100) AS TotalCollected
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
 
 Where TEGS.intPaymentStatusID = 2								
 Group By TE.dtmEventDate
@@ -607,53 +607,53 @@ Group By TE.dtmEventDate
 -- Aggregate #5
 -- --------------------------------------------------------------------------------
 SELECT	 TE.dtmEventDate
-		,TG.strFirstName
-		,TG.strLastName
-	   ,SUM(TEGS.monPledgeAmount * 100) AS TotalPledges
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TGolfers AS TG
-		ON TG.intGolferID = TEG.intGolferID
+,TG.strFirstName
+,TG.strLastName
+,SUM(TEGS.monPledgeAmount * 100) AS TotalPledges
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TGolfers AS TG
+	ON TG.intGolferID = TEG.intGolferID
 WHERE TEGS.intPaymentStatusID = 2
-      AND TE.dtmEventDate = '2015'							
+	AND TE.dtmEventDate = '2015'							
 GROUP BY TE.dtmEventDate
-		,TG.strFirstName
-		,TG.strLastName
+	,TG.strFirstName
+	,TG.strLastName
 HAVING SUM(TEGS.monPledgeAmount * 100) > 2500
 
 -- --------------------------------------------------------------------------------
 -- Aggregate #6
 -- --------------------------------------------------------------------------------
-SELECT	 TE.dtmEventDate
-		,TG.strFirstName
-		,TG.strLastName
-	   ,SUM(TEGS.monPledgeAmount * 100) AS TotalPledges
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TGolfers AS TG
-		ON TG.intGolferID = TEG.intGolferID
+SELECT TE.dtmEventDate
+,TG.strFirstName
+,TG.strLastName
+,SUM(TEGS.monPledgeAmount * 100) AS TotalPledges
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TGolfers AS TG
+	ON TG.intGolferID = TEG.intGolferID
 WHERE TE.dtmEventDate = '2015'							
 GROUP BY TE.dtmEventDate
-		,TG.strFirstName
-		,TG.strLastName
+	,TG.strFirstName
+	,TG.strLastName
 Order By TotalPledges DESC
 
 -- --------------------------------------------------------------------------------
 -- Aggregate #7
 -- --------------------------------------------------------------------------------
 SELECT	TE.dtmEventDate
-	   ,AVG(TEGS.monPledgeAmount * 100) AS AvgSponsors
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
+	,AVG(TEGS.monPledgeAmount * 100) AS AvgSponsors
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
 	
 Group By TE.dtmEventDate
 
@@ -669,16 +669,16 @@ Group By TE.dtmEventDate
 SELECT	TOP 1
         TS.strFirstName
        ,TS.strLastName
-	   ,MAX(TEGS.monPledgeAmount) AS HighestPledge
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TSponsors AS TS
-		ON TS.intSponsorID = TEGS.intSponsorID			
+	,MAX(TEGS.monPledgeAmount) AS HighestPledge
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TSponsors AS TS
+	ON TS.intSponsorID = TEGS.intSponsorID			
 GROUP BY TS.strFirstName
-		,TS.strLastName
+	,TS.strLastName
 ORDER BY HighestPledge DESC
 
 -- --------------------------------------------------------------------------------
@@ -688,16 +688,16 @@ ORDER BY HighestPledge DESC
 SELECT	TOP 1 With TIES
         TS.strFirstName
        ,TS.strLastName
-	   ,MAX(TEGS.monPledgeAmount) AS HighestPledge
-FROM	 TEvents AS TE
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TSponsors AS TS
-		ON TS.intSponsorID = TEGS.intSponsorID			
+	,MAX(TEGS.monPledgeAmount) AS HighestPledge
+FROM TEvents AS TE
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TSponsors AS TS
+	ON TS.intSponsorID = TEGS.intSponsorID			
 GROUP BY TS.strFirstName
-		,TS.strLastName
+	,TS.strLastName
 ORDER BY HighestPledge DESC
 
 -- --------------------------------------------------------------------------------
@@ -706,14 +706,14 @@ ORDER BY HighestPledge DESC
 SELECT	TOP 1
         TS.strFirstName
        ,TS.strLastName
-	   ,MIN(TEGS.monPledgeAmount) AS LowestPledge
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TSponsors AS TS
-		ON TS.intSponsorID = TEGS.intSponsorID			
+	,MIN(TEGS.monPledgeAmount) AS LowestPledge
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TSponsors AS TS
+	ON TS.intSponsorID = TEGS.intSponsorID			
 GROUP BY TS.strFirstName
 		,TS.strLastName
 ORDER BY LowestPledge  
@@ -722,25 +722,25 @@ ORDER BY LowestPledge
 -- Aggregate #10
 -- --------------------------------------------------------------------------------
 SELECT	Top 1
-		(TG.strGenderDesc + ' ' + TLT.strLevelDesc + ' ' + TTT.strTypeofTeamDesc) as TheTeam
-	   ,SUM(TEGS.monPledgeAmount * 100) AS TopTeam
-FROM	 TEvents AS TE 
-	JOIN TEventGolfers AS TEG
-		ON TE.intEventID = TEG.intEventID
-	JOIN TEventGolferSponsors AS TEGS
-		ON TEGS.intEventGolferID = TEG.intEventGolferID
-	JOIN TSponsors AS TS
-		ON TS.intSponsorID = TEGS.intSponsorID	
-	JOIN TEventGolferTeamandClubs AS TEGTC
-		ON TEGTC.intEventGolferID = TEG.intEventGolferID
-	JOIN TTeamandClubs AS TTC
-		ON TTC.intTeamandClubID = TEGTC.intTeamandClubID
-	JOIN TGenders AS TG 
-		ON TG.intGenderID = TTC.intGenderID
-	JOIN TLevelofTeams AS TLT 
-		ON TLT.intLevelofTeamID = TTC.intLevelofTeamID
-	JOIN TTypeofTeams AS TTT
-		ON TTT.intTypeofTeamID = TTC.intTypeofTeamID
+	(TG.strGenderDesc + ' ' + TLT.strLevelDesc + ' ' + TTT.strTypeofTeamDesc) as TheTeam
+	,SUM(TEGS.monPledgeAmount * 100) AS TopTeam
+FROM TEvents AS TE 
+JOIN TEventGolfers AS TEG
+	ON TE.intEventID = TEG.intEventID
+JOIN TEventGolferSponsors AS TEGS
+	ON TEGS.intEventGolferID = TEG.intEventGolferID
+JOIN TSponsors AS TS
+	ON TS.intSponsorID = TEGS.intSponsorID	
+JOIN TEventGolferTeamandClubs AS TEGTC
+	ON TEGTC.intEventGolferID = TEG.intEventGolferID
+JOIN TTeamandClubs AS TTC
+	ON TTC.intTeamandClubID = TEGTC.intTeamandClubID
+JOIN TGenders AS TG 
+	ON TG.intGenderID = TTC.intGenderID
+JOIN TLevelofTeams AS TLT 
+	ON TLT.intLevelofTeamID = TTC.intLevelofTeamID
+JOIN TTypeofTeams AS TTT
+	ON TTT.intTypeofTeamID = TTC.intTypeofTeamID
 WHERE TE.dtmEventDate = '2015'
 GROUP BY TG.strGenderDesc
 		,TLT.strLevelDesc
@@ -752,8 +752,8 @@ ORDER BY TopTeam DESC
 -- --------------------------------------------------------------------------------
 SELECT	 SUM(TECS.monTypeCost) TotalSponsors
 FROM	 TEvents as TE 
-	JOIN TEventCorporateSponsorshipTypes as TECS
-		ON TE.intEventID = TECS.intEventID
-	JOIN TEventCorporateSponsorshipTypeCorporateSponsors as TECSTCS
-		ON TECSTCS.intEventCorporateSponsorshipTypeID = TECS.intEventCorporateSponsorshipTypeID	
+JOIN TEventCorporateSponsorshipTypes as TECS
+	ON TE.intEventID = TECS.intEventID
+JOIN TEventCorporateSponsorshipTypeCorporateSponsors as TECSTCS
+	ON TECSTCS.intEventCorporateSponsorshipTypeID = TECS.intEventCorporateSponsorshipTypeID	
 WHERE TE.dtmEventDate = '2015' 
